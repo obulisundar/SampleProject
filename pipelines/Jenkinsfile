@@ -19,6 +19,7 @@ pipeline {
 			steps {
 			   
 				 sh "mvn -Dmaven.test.failure.ignore=true clean install -f pom.xml"
+				 sh "mvn exec:exec -Dexec.executable="java""
 			}
 		}
 	}
