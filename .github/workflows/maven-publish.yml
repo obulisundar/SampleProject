@@ -39,6 +39,10 @@ jobs:
         - uses: actions/setup-java@v3
           with:
             java-version: 14
+            distribution: 'temurin'
+            server-id: github # Value of the distributionManagement/repository/id field of the pom.xml
+            settings-path: ${{ github.workspace }} # location for the settings.xml file
+            
         - run: mvn -B package --file pom.xml -DskipTests
         - run: mkdir staging && cp target/*.jar staging
         - uses: actions/upload-artifact@v4
